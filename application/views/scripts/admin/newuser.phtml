@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="Lucivan Max" content="Comparing V1.0">   
+    <link rel="icon"  type="image/png" href="../image/fav_vit.png">
+   <title> Comparing </title>
+
+        <!-- Bootstrap core CSS -->
+    <link href="/css/bootstrap.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="/css/jumbotron.css" rel="stylesheet">
+
+    <!-- Just for debugging purposes. Don't actually copy this line! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+  
+  <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href=""></a>
+          </div>
+          <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+      <!--            <li><a href="/admin">VOLTAR</a></li>
+      	<li  class="active"><a href="">Adicionar Vídeo</a></li>   -->
+             	<li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">MENU <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                 <li class="divider"></li>
+                 <li><a href="/admin">Voltar</a></li>
+                 <li class="divider"></li>
+                  <li class="dropdown-header">MULTIMÍDIA</li>
+                  <li><a href="newvideo">Novo Arquivo</a></li>
+                  <li><a href="listvideo">Editar/Deletar Arquivo</a></li>
+ 			<!--   <li><a href="#">Something else here</a></li>  -->
+                  <li class="divider"></li>
+                  <li class="dropdown-header">USUÁRIOS</li>
+<!--                   <li><a href="newuser">Novo Usuário</a></li>  -->
+                  <li><a href="listuser">Excluir Usuário</a></li>
+                </ul>
+              </li>
+              <li><a href="/auth/logout">SAIR</a></li>
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+   <!-- Main jumbotron for a primary marketing message or call to action -->
+    <div class="jumbotron">
+      <div class="container">
+         <h4 id="relogio"></h4>
+      <h2>COMPARING </h2>
+        </div>
+    </div>
+ 
+    <div class="container">
+      <!-- Example row of columns -->
+      <div class="row">
+        <div class="col-md-4">
+          
+        </div>
+        <div class="col-md-4">
+        
+						<form class="form-horizontal"  id="user" action="<?php echo $this->url(array('controller' => 'admin', 
+						'action' => 'newuser')) ?>" method="post">
+							<fieldset>
+							
+						<!-- Form Name -->
+							<legend>Cadastrar Usuário</legend>
+							
+						
+							<!-- Text input-->
+							<div class="control-group">
+							  <label class="control-label" for="login">Login</label>
+							  <div class="controls">
+							    <input id="login" name="login" placeholder="login" class="input-large" required="" type="text">
+							    
+							  </div>
+							</div>
+							
+							<!-- Text input-->
+							<div class="control-group">
+							  <label class="control-label" for="senha">Senha</label>
+							  <div class="controls">
+							    <input id="senha" name="senha" placeholder="Senha" class="input-medium" required="" type="text">
+							    
+							  </div>
+							</div>
+							
+							<!-- Text input-->
+							<div class="control-group">
+							  <label class="control-label" for="nome">Nome</label>
+							  <div class="controls">
+							    <input id="nome" name="nome" placeholder="Nome do Usuário" class="input-xxlarge" required="" type="text">
+							    
+							  </div>
+							</div>
+							
+							<!-- Select Basic -->
+							<div class="control-group">
+							  <label class="control-label" for="selectbtipo">Empresa</label>
+							  <div class="controls">
+							    <select id="selectbtipo" name="empresa" class="input-medium" required="">
+							    <option value="">SELECIONE</option>
+							      <option value="1"> Globo</option>
+							      <option value="2"> SBT</option>
+							     </select>
+							  </div>
+							</div>
+							
+							<!-- Select Basic -->
+							<div class="control-group">
+							  <label class="control-label" for="selectbtipo">Permissão</label>
+							  <div class="controls">
+							    <select id="selectbtipo" name="permissao" class="input-medium" required="">
+							    <option value="">SELECIONE</option>
+							      <option value="1"> ADMIN </option>
+							      <option value="2"> GESTOR </option>
+							      <option value="3"> ADMIN </option>
+							    </select>
+							  </div>
+							</div>
+											
+							
+							<!-- Button -->
+							<div class="control-group">
+							  <label class="control-label" for="submit"></label>
+							  <div class="controls">
+							     <button id="cancel" class="btn btn-danger" name="Limpar" type="reset">Cancelar</button>							    <button id="submit" name="Adicionar" class="btn btn-success">Gravar</button>
+							  </div>
+							</div>
+							
+							
+							</fieldset>
+							</form>
+        
+           </div>
+        <div class="col-md-4">
+          
+        </div>
+      </div>
+
+      <hr>
+
+       <footer>
+    <p>Você está em um ambiente seguro. Todos os seus dados estão protegidos.</p>
+  	<p> Viterativa - Web e Vídeo Conteúdo CNPJ: XXXXXXXX</p>
+       <p>Comparing V1.0 &copy; 2014 - Todos os direitos reservados.</p>
+      </footer>
+    </div> <!-- /container -->
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="/js/jquery-1.11.1.js"></script> 
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/relogio.js"></script> 
+    <script src="/js/jquery.validate1.js"></script>
+     <script>
+    $().ready(function() {
+      $("#user").validate();
+  });
+  </script>
+  </body>
+</html>

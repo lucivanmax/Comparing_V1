@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="Lucivan Max" content="Comparing V1.0">   
+    <link rel="icon"  type="image/png" href="../image/fav_vit.png">
+   <title> Comparing </title>
+
+          <!-- Bootstrap core CSS -->
+    <link href="/css/bootstrap.css" rel="stylesheet" media="screen">
+    
+    <!-- print CSS --> 
+    <link href="/css/print.css"  rel="stylesheet" media="print">
+
+    <!-- Custom styles for this template -->
+    <link href="/css/jumbotron.css" rel="stylesheet" media="screen">
+
+  	<!-- Counter CSS -->
+    <link href="/css/counter.css" rel="stylesheet" >
+
+    <!-- Just for debugging purposes. Don't actually copy this line! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+      </head>
+
+  <body>
+
+       <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+             <a class="navbar-brand" ></a>
+        </div>   
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+            	<li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">MENU <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                  <li class="divider"></li>
+                 <li><a href="/gestor">Voltar</a></li>
+                  <li class="divider"></li>
+                  <li class="dropdown-header">MULTIMÍDIAS</li>
+                  <li><a href="newvideo">Cadastrar Novo Arquivo</a></li>
+                 </ul>
+              </li>
+               <li><a href="/auth/logout">SAIR</a></li>
+            </ul>
+         </div><!--/.nav-collapse -->    
+      </div>
+    </div>
+
+     <!-- Main jumbotron for a primary marketing message or call to action -->
+    <div class="jumbotron">
+      <div class="container">
+ 		     <h4 id="relogio"></h4>
+      <h2>COMPARING </h2>
+      <h4>Relação de arquivos multimídia cadastrados</h4>
+      	</div>
+    </div>
+
+    <div class="container">
+      <!-- Example row of columns -->      
+      <div class="row">										
+		      	<!-- Text input-->
+						<div class="control-group" id="perquisar">						  
+						  <div class="controls">
+						<label class="control-label" for="Pesquisar">Pesquisar nesta página:</label> 
+						  <input id="pesquisar" name="Pesquisar" placeholder="Pesquisar..." class="input-xlarge" type="text" style="text-transform:uppercase;">
+						  <img src="/image/delete.png" alt="Limpar" style="cursor:pointer" onclick="window.location.reload()"/> 
+						    <p class="help-block"> </p>
+						  </div>
+						</div>
+  
+						  <div class="bs-docs-example">
+						  <div class="table-responsive">
+				            <table class="table table-striped" id="videos">
+				              <thead>
+				               <tr>
+		
+						                   	<th>#</th>						
+									<th style="cursor:pointer">Tipo</th>
+									<th style="cursor:pointer">Título</th>
+									<th style="cursor:pointer">Data | Hora</th>
+									<th style="cursor:pointer">Duração</th>
+									<th id="url">Multimídia</th> 
+									<th style="cursor:pointer">Aprovação</th>
+									<th id="url">Editar</th>
+                  					<th id="url">Excluir</th>
+				                </tr>
+				              </thead>
+				              <tbody>
+				              
+				              <?php foreach ($this->videos as $video): ?>
+								<tr>
+									<td class="rownums"></td>
+									<td><?php echo $this->escape($video->tipo); ?></td>
+									<td><?php echo $this->escape($video->titulo); ?></td>
+									<td><?php echo $this->escape($video->data); ?></td>
+									<td><?php echo $this->escape($video->duracao); ?></td>
+									<td id="url"> 
+<a href=" <?php echo $this->url(array('controller'=>'gestor','action'=>'multimidia',
+											 'id'=>$video->id), null, false);  ?>" class="btn btn-success btn-mini"    target="_blank">
+								 Multimídia</a>
+									</td>				
+									<td><?php  echo $this->escape($video->aprovacao); ?></td>
+			<td id="url">																	
+            <a href="<?php echo $this->url(array('controller'=>'gestor','action'=>'editvideo', 'id'=>$video->id)); ?>"><img src="/image/edit.png" width="16" height="16" /></a>
+            </td>
+            <td id="url">
+            <a href="<?php echo $this->url(array('controller'=>'gestor','action'=>'deletevideo', 'id'=>$video->id)); ?>"><img src="/image/delete.png" width="16" height="16" /></a>
+          	</td>
+								</tr>
+								<?php endforeach; ?>
+				              </tbody>
+				            </table>
+				            			            
+								  <div id="pager" class="pager">
+								    <form class="form-horizontal" role="form">
+									<fieldset>
+									<!-- Select Basic -->
+									<div class="control-group">	
+									  <div class="controls">
+									  	<label class="control-label" for="selectbasic">Registros</label>												
+										<select  id="selectbasic" name="selectbasic"  class="input-mini pagesize">
+										<option selected="selected" value="1000">TODOS</option>
+										<option value="50">50</option>
+										<option value="100">100</option>
+										<option value="200">200</option>
+										</select>
+									  </div>
+									</div>
+										
+										 <!-- Text input-->
+									<div class="control-group">
+									  <div class="controls">
+									    <label class="control-label" for="textinput">Página:</label>
+										<img src="/image/first.png" class="first"/>
+							     		<img src="/image/prev.png" class="prev"/>
+									    <input id="textinput" name="textinput" placeholder="Pagina: " class="input-mini pagedisplay" type="text" readonly="true" >
+									     <img src="/image/next.png" class="next"/>
+							    		 <img src="/image/last.png" class="last"/> 
+									  </div>
+									</div>
+									</fieldset>
+									</form>
+							</div>             
+				 			</div>
+
+						 			 <ul class="pager" id="url" style="cursor:pointer">  
+					                    <li class="next"><a id="subir">Subir &uarr;</a></li>
+					                 </ul> 
+
+									<!-- Button -->
+								<div class="control-group">
+								  <label class="control-label" for="singlebutton"></label>
+								  <div class="controls">
+								    <button type="submit"  id="singlebutton" name="singlebutton" class="btn btn-primary"  onMouseDown='self.print()' >Imprimir</button>
+								  </div>
+								</div>  
+				    		</div>
+		</div>		          
+      <hr>
+
+       <footer>
+   	<p>Você está em um ambiente seguro. Todos os seus dados estão protegidos.</p>
+    		<p> Viterativa - Web e Vídeo Conteúdo CNPJ: XXXXXXXX</p>
+       <p>Comparing V1.0 &copy; 2014 - Todos os direitos reservados.</p>
+      </footer>
+    </div> <!-- /container -->
+    <!--  
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="/js/jquery-1.11.1.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/jquery1.5.1.js"></script>
+    <script src="/js/jquery.tablesorter.min.js"></script>
+    <script src="/js/jquery.tablesorter.pager.js"></script>
+    <script src="/js/effect.js"></script>
+    <script src="/js/relogio.js"></script>
+    <script src="/js/comparing.js"></script> 
+  </body>
+</html>

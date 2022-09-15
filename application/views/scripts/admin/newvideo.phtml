@@ -1,0 +1,223 @@
+	<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="Lucivan Max" content="Comparing V1.0">   
+    <link rel="icon"  type="image/png" href="../image/fav_vit.png">
+   <title> Comparing </title>
+
+        <!-- Bootstrap core CSS -->
+    <link href="/css/bootstrap.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="/css/jumbotron.css" rel="stylesheet">
+
+    <!-- Just for debugging purposes. Don't actually copy this line! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+  
+  <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href=""></a>
+          </div>
+          <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+               <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">MENU<b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                 <li class="divider"></li>
+                 <li><a href="/admin">Voltar</a></li>
+                 <li class="divider"></li>
+                  <li class="dropdown-header">MULTIMÍDIA</li>
+                  <li><a href="listvideo">Editar/Deletar Arquivo</a></li>
+                   <li class="divider"></li>
+                  <li class="dropdown-header">USUÁRIOS</li>
+                  <li><a href="newuser">Novo Usuário</a></li>
+                  <li><a href="listuser">Excluir Usuário</a></li>
+                </ul>
+              </li>
+              <li><a href="/auth/logout">SAIR</a></li>
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    <!-- Main jumbotron for a primary marketing message or call to action -->
+    <div class="jumbotron">
+      <div class="container">
+ 		     <h4 id="relogio"></h4>
+      <h2>COMPARING </h2>
+     <h4> Olá <?php echo $this->usuario; ?>  </h4>   
+      	</div>
+    </div>
+
+    <div class="container">
+       <div class="row">
+        <div class="col-md-4">
+          
+        </div>
+        <div class="col-md-4">
+        <?php // echo $this->form; ?>
+						<form class="form-horizontal" id="video"  action="<?php echo $this->url(array('controller' => 'admin', 
+						'action' => 'newvideo')) ?>" method="post">
+							<fieldset>
+							
+						<!-- Form Name -->
+							<legend>Cadastrar Multimídia</legend>
+							
+							<!-- Select Basic -->
+							<div class="control-group">
+							  <label class="control-label" for="selectbtipo">Tipo</label>
+							  <div class="controls">
+							    <select id="tipo" name="tipo" class="input-medium" required="">
+							    <option value="">SELECIONE</option>
+							      <option>PROGRAMA</option>
+							      <option>COMERCIAL</option>
+							      <option>MATERIA</option>
+							      <option>PECA</option>
+								  <option>PROPOSTAS</option>
+							      <option>DEPOIMENTO</option>
+							      <option>CLIP</option>
+								  <option>VINHETA</option>
+							      <option>RADIO</option>
+							      <option>INTERNET</option>
+							      <option>IMPRESSO</option>
+							      <option>DIVERSOS</option>
+							    </select>
+							  </div>
+							</div>
+						
+							<!-- Text input-->
+							<div class="control-group">
+							  <label class="control-label" for="titulo">Título</label>
+							  <div class="controls">
+							    <input id="titulo" name="titulo" placeholder="Título" class="input-large" required="" type="text">
+							    
+							  </div>
+							</div>
+							
+							<!-- Text input-->
+							<div class="control-group">
+							  <label class="control-label" for="duracao">Duração</label>
+							  <div class="controls">
+							    <input id="duracao" name="duracao" placeholder="00:00" class="input-medium" required="" type="text" minlength="5" maxlength="5">
+							  </div>
+							</div>
+							
+								<!-- Select Basic -->
+							<div class="control-group">
+							  <label class="control-label" for="selectbtipo">Tipo do Arquivo</label>
+							  <div class="controls">
+							    <select id="ext_arq" name="ext_arq" class="input-medium" required="">
+							   <option value="">SELECIONE</option>
+							    <option value="video/mp4">MP4</option>
+							   <option value="audio/mp3">MP3</option>
+							   <option value="image/png">PNG</option>
+							    </select>
+							  </div>
+							</div>
+							
+							
+							<!-- Text input-->
+						 	<div class="control-group">
+							  <label class="control-label" for="curl">Nome do Arquivo (com extensão)</label>
+							   <div class="controls">
+							    <input id="nome_arq" name="nome_arq" placeholder="videos.mp4"   class="input-medium" required="" type="text">							    
+							  </div>
+							</div>
+							
+							
+								<!-- Select Basic -->
+							<div class="control-group">
+							  <label class="control-label" for="selectbtipo">Cliente</label>
+							  <div class="controls">
+							    <select id="selectbtipo" name="cliente" class="input-medium" required="">
+							    <option value="">SELECIONE</option>
+							      <option value="1"> Globo</option>
+							      <option value="2"> SBT</option>
+							     </select>
+							  </div>
+							</div>
+							
+							
+							<!-- Select Basic -->
+							<div class="control-group">
+							  <label class="control-label" for="selectbaprovacao">Aprovação</label>
+							  <div class="controls">
+							    <select id="aprovacao" name="aprovacao" class="input-medium" required="">
+							    <option value="">SELECIONE</option>
+							      <option>Romero</option>
+							      <option>Rubens</option>
+							      <option>Chico</option>
+							      <option>Weber</option>
+							      <option>Janderson</option>
+							      <option>Oseas</option>
+							      <option>Leandro</option>
+							       <option>Outros</option>
+							    </select>
+							  </div>
+							</div>
+					
+											
+							<!-- Button -->
+					 		<div class="control-group">
+							  <label class="control-label" for="submit"></label>
+							  <div class="controls">
+							    <button id="cancel" class="btn btn-danger" name="Limpar" type="reset">Limpar</button>							  
+							    <button id="submit" name="Adicionar" class="btn btn-success">Cadastrar</button>
+							  </div>
+							</div>						
+							</fieldset>
+							</form>
+        
+        
+           </div>
+        <div class="col-md-4">
+          
+        </div>
+      </div>
+
+      <hr>
+
+       <footer>
+   	<p>Você está em um ambiente seguro. Todos os seus dados estão protegidos.</p>
+    	<p> Viterativa - Web e Vídeo Conteúdo CNPJ: XXXXXXXX</p>
+       <p>Comparing V1.0 &copy; 2014 - Todos os direitos reservados.</p>
+      </footer>
+    </div> <!-- /container -->
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->   
+   
+    <script src="/js/jquery-1.11.1.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/relogio.js"></script> 
+    <script src="/js/form.js"></script>
+    <script src="/js/jquery.mask.min.js"></script>
+    <script src="/js/jquery.validate1.js"></script>
+     <script>
+		$().ready(function() {
+			$("#video").validate();
+	});
+	</script>
+  </body>
+</html>

@@ -1,0 +1,16 @@
+/* counter for table */
+
+
+  tbody tr 
+    {
+      counter-increment : rownum ; 
+    }
+    tbody 
+    { 
+      counter-reset: rownum; 
+    }
+  
+    table#videos td.rownums:before 
+    { 
+      content: counter(rownum) ; 
+    }
