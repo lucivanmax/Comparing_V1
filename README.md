@@ -6,4 +6,4 @@ Admin
 Gestor 
 Comum
 
-Cadastramento de Arquivos para aprovação para visualização do cliente. 
+Cadastramento de Arquivos para visualização e aprovação do cliente. 
