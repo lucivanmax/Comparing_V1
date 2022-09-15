@@ -1,9 +1,3 @@
-# Comparing_V1
+Multimedia File Management System With 3 Layers Users: Admin, Common, Manager
 
-Sistema de Gerenciamento de Arquivos Multimídia
-Com 3 Camadas de Usuarios:
-Admin
-Gestor 
-Comum
-
-Cadastramento de Arquivos para visualização e aprovação do cliente. 
+File Registration for viewing and customer approval.
